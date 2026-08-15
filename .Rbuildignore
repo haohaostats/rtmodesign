@@ -1,4 +1,4 @@
 ^data-raw$
 ^README\.Rmd$
 ^\.github$
-
+^CONTRIBUTING\.md$
