@@ -3,6 +3,8 @@ Type: Package
 Title: Regularized Third-Order Moment Optimal Designs for Active-Controlled Dose-Response Studies
 Version: 1.0.0
 Authors@R: person("haohaostats", email = "haocstats@gmail.com", role = c("aut", "cre", "cph"))
+Author: haohaostats [aut, cre, cph]
+Maintainer: haohaostats <haocstats@gmail.com>
 Description: Provides an application-oriented workflow for planning
     active-controlled dose-response studies using regularized third-order
     moment optimal designs. The public interface accepts patient-level pilot

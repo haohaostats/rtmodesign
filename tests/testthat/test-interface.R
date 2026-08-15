@@ -21,6 +21,11 @@ test_that("ordinary-user interface validates a supported design", {
   expect_lte(fit$regularization$regularized_condition_number, 100 + 1e-8)
   expect_true(fit$regularization$lambda >= 0 && fit$regularization$lambda <= 1)
   expect_true(fit$optimality$passed)
+  expect_lte(fit$optimality$maximum_sensitivity, 1 + 1e-8)
+  expect_gte(fit$optimality$certified_efficiency_lower_bound,
+             1 / (1 + 1e-8))
+  expect_equal(nrow(fit$optimality$grid), 10001L)
+  expect_true(is.finite(fit$optimality$maximum_sensitivity_dose))
   expect_equal(sum(fit$approximate_design$weight), 1, tolerance = 1e-8)
   expect_equal(sum(fit$approximate_design$count), 240)
   expect_lte(fit$exact_allocation$maximum_quota_deviation, 1)

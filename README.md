@@ -66,8 +66,8 @@ The exact allocation for a future sample size of 240 is:
 
 | Study component | Dose | Approximate weight | Exact n |
 |:--|--:|--:|--:|
-| New treatment | 35.40 | 0.3414 | 82 |
-| New treatment | 100.00 | 0.1423 | 34 |
+| New treatment | 35.42 | 0.3415 | 82 |
+| New treatment | 100.00 | 0.1422 | 34 |
 | Active control | -- | 0.5163 | 124 |
 
 The diagnostic view combines the observed pilot data with the normalized

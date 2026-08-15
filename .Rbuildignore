@@ -2,3 +2,8 @@
 ^README\.Rmd$
 ^\.github$
 ^CONTRIBUTING\.md$
+^\.git$
+^\.gitignore$
+^\.\.Rcheck$
+^rtmodesign\.Rcheck$
+^rtmodesign_[0-9.]+\.tar\.gz$
