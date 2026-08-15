@@ -444,9 +444,14 @@ compute_rtmo_design <- function(model, theta, moments, regularization, target,
       weights <- optimized$weights
     }
   }
-  criterion <- optimized$criterion
   design_information <- Reduce(`+`, Map(function(weight, item) weight * item,
                                          weights, support_information))
+  # Recompute from the final matrix so the sensitivity normalization and the
+  # reported criterion use exactly the same floating-point factorization on
+  # every supported platform.
+  criterion <- rtmo_criterion(
+    weights, support_information, target_system$matrix
+  )
   sensitivity <- rtmo_sensitivity(information, design_information,
                                   target_system$matrix, criterion)
   maximum <- maximize_rtmo_sensitivity(
