@@ -1,0 +1,23 @@
+Package: rtmodesign
+Type: Package
+Title: Regularized Third-Order Moment Optimal Designs for Active-Controlled Dose-Response Studies
+Version: 1.0.0
+Authors@R: person("haohaostats", email = "haocstats@gmail.com", role = c("aut", "cre", "cph"))
+Description: Provides an application-oriented workflow for planning
+    active-controlled dose-response studies using regularized third-order
+    moment optimal designs. The public interface accepts patient-level pilot
+    data and clinical design conditions, estimates the target-dose problem,
+    constructs approximate and exact allocations, and returns a structured
+    design object with transparent regularization and optimality diagnostics.
+License: MIT + file LICENSE
+URL: https://github.com/haohaostats/rtmodesign
+BugReports: https://github.com/haohaostats/rtmodesign/issues
+Encoding: UTF-8
+RoxygenNote: 7.3.2
+Depends: R (>= 4.2.0)
+Imports:
+    graphics,
+    stats
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

@@ -1,0 +1,6 @@
+S3method(as.data.frame,rtmo_design)
+S3method(plot,rtmo_design)
+S3method(print,rtmo_design)
+S3method(print,summary_rtmo_design)
+S3method(summary,rtmo_design)
+export(rtmo_design)
