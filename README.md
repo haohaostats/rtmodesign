@@ -1,5 +1,9 @@
 # rtmodesign
 
+[![R-CMD-check](https://github.com/haohaostats/rtmodesign/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/haohaostats/rtmodesign/actions/workflows/R-CMD-check.yaml)
+[![Release](https://img.shields.io/github/v/release/haohaostats/rtmodesign)](https://github.com/haohaostats/rtmodesign/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 `rtmodesign` provides an ordinary-user workflow for regularized third-order
 moment optimal design in active-controlled dose-response studies.
 
@@ -34,14 +38,13 @@ fit <- rtmo_design(
 
 fit
 summary(fit)
-plot(fit, type = "data")
 plot(fit, type = "dose_response")
 plot(fit, type = "design")
 plot(fit, type = "diagnostic")
 ```
 
-The example data are fully simulated for software teaching and do not
-reproduce the manuscript simulation or reconstruct patient-level records.
+The bundled example data provide a complete, immediately runnable illustration
+of the ordinary-user workflow.
 
 The single call fits the selected dose-response model, estimates the matched
 active-control dose, estimates residual moments through order six, applies
@@ -50,6 +53,36 @@ checks its sensitivity-function certificate, and generates an exact allocation
 when `n` is supplied. When `target_region` is omitted, the package uses an
 automatic planning region centered at the estimated target with half-width 15
 percent of the allowed dose range.
+
+## Example output
+
+The example identifies an active-control-matched target dose of **44.47** and
+constructs a design over the automatically selected planning region from
+**29.47 to 59.47** dose units.
+
+![Dose-response fit and recommended allocation](man/figures/rtmodesign-overview.png)
+
+The exact allocation for a future sample size of 240 is:
+
+| Study component | Dose | Approximate weight | Exact n |
+|:--|--:|--:|--:|
+| New treatment | 35.40 | 0.3414 | 82 |
+| New treatment | 100.00 | 0.1423 | 34 |
+| Active control | -- | 0.5163 | 124 |
+
+The diagnostic view combines the observed pilot data with the normalized
+sensitivity function used to verify the computed design.
+
+![Pilot data and optimality diagnostic](man/figures/rtmodesign-diagnostics.png)
+
+| Diagnostic | Result |
+|:--|--:|
+| Analysis observations | 150 |
+| Residual skewness | 1.065 |
+| Raw moment condition number | 30.56 |
+| Moment regularization | Not required |
+| Maximum normalized sensitivity | 1.000 |
+| Optimality certificate | Passed |
 
 ## Supported models
 

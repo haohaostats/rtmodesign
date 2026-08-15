@@ -9,10 +9,8 @@
   \item{treatment}{Either \code{new} or \code{control}.}
 }}
 \description{
-A fully simulated teaching data set for demonstrating the ordinary-user
-workflow. It is not derived from the manuscript simulation or a clinical
-patient data set.
+A teaching data set that provides a complete, immediately runnable illustration
+of the ordinary-user workflow.
 }
 \usage{rtmo_example}
 \keyword{datasets}
-
