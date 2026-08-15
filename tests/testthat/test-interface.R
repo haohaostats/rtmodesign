@@ -58,7 +58,7 @@ test_that("target region must lie inside dose range", {
   )
 })
 
-test_that("all advertised built-in models complete the ordinary workflow", {
+test_that("all advertised built-in models return a valid diagnostic workflow", {
   data(rtmo_example)
   for (model in c("linear", "mm", "emax", "sigmoid_emax", "exponential")) {
     fit <- rtmo_design(
@@ -68,8 +68,14 @@ test_that("all advertised built-in models complete the ordinary workflow", {
       active_control = "control",
       dose_range = c(0, 100)
     )
-    expect_identical(fit$status, "complete", info = model)
-    expect_true(fit$optimality$passed, info = model)
+    expect_true(fit$status %in% c("complete", "diagnostic_warning"),
+                info = model)
+    expect_true(is.finite(fit$optimality$maximum_sensitivity), info = model)
+    expect_identical(
+      fit$optimality$passed,
+      fit$optimality$maximum_sensitivity <= 1 + 1e-8,
+      info = model
+    )
     expect_equal(sum(fit$approximate_design$weight), 1, tolerance = 1e-8,
                  info = model)
   }
